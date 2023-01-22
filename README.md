@@ -1,0 +1,11 @@
+img/
+aio_ex.py
+categories.py
+decorators.py
+exceptions.py
+g_sheets.py
+middleware.py
+ngrok.exe
+ngrock.yml
+requirements.txt
+wwmess.py
