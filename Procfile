@@ -1,1 +1,1 @@
-worker: aio_ex.py
+worker: python aio_ex.py
