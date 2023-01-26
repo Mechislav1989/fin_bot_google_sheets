@@ -1,2 +1,2 @@
 worker: python ngrok_script.py
-web: python aio_ex.py
+worker: python aio_ex.py
