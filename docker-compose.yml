@@ -3,7 +3,7 @@ version: '3.8'
 services:
   ngrok:
     image: ngrok/ngrok
-    entrypoint: ngrok --authtoken 2Ca0ixepvwNtwFtKzQncfKE4oUC_28FZSbsRRp8snSX19UDai http http://127.0.0.1:8080
+    entrypoint: ngrok --authtoken 2Ca0ixepvwNtwFtKzQncfKE4oUC_28FZSbsRRp8snSX19UDai http 5432
     restart: always
     ports:
       - 6379:6379
