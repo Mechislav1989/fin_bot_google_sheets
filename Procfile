@@ -1,5 +1,2 @@
-
-
-processor: ngrok --authtoken 2Ca0ixepvwNtwFtKzQncfKE4oUC_28FZSbsRRp8snSX19UDai http 8080
-
+processor: python ngrok_script.py
 worker: python aio_ex.py
