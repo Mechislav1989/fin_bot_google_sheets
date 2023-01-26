@@ -1,5 +1,6 @@
 import os 
 from dotenv import load_dotenv
+import aiohttp
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 import logging
@@ -10,20 +11,28 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import (CallbackQuery, InlineKeyboardButton,
                            InlineKeyboardMarkup)
 from middleware import AccessMiddleware
+import ngrok
 
 import wwmess
 import exceptions
 from categories import Categories
 
-
 load_dotenv()
 
+api_key = os.getenv('api_token')
+client = ngrok.Client(api_key)
+ports = 0
+for t in client.tunnels.list():
+    ports = t.public_url
+
 api_bot = os.getenv('bot')
+
 WEBHOOK_PATH = ''
-WEBHOOK_HOST = os.getenv('url_hook')
 WEBAPP_HOST = os.getenv('webapp_host')
-WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 WEBAPP_PORT = os.getenv('webapp_port')
+host = f"{WEBAPP_HOST}:{WEBAPP_PORT}"
+WEBHOOK_HOST = ports
+WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 ACCESS_ID = os.getenv('access_id')
 storage: MemoryStorage = MemoryStorage()
 
@@ -201,7 +210,7 @@ if __name__ == '__main__':
         dp, webhook_path=WEBHOOK_PATH,
         on_startup=on_startup,
         on_shutdown=on_shutdown,
-        skip_updates=True,
+        skip_updates=False,
         host=WEBAPP_HOST,
         port=WEBAPP_PORT
         )    
