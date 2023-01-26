@@ -1,5 +1,4 @@
-from pyngrok import ngrok, conf
-from pyngrok.conf import PyngrokConfig
+from pyngrok import ngrok
 from dotenv import load_dotenv
 import os
 
@@ -7,10 +6,8 @@ import os
 load_dotenv()
 
 def tunel():
-    conf.get_default().config_path = "/ngrok.yml"
     ngrok.set_auth_token(os.environ.get("authtoken"))
-    global tunnel1
-    tunnel1 = ngrok.connect(8090).public_url
+    tunnel1 = ngrok.connect(8080).public_url
     ngrok_process = ngrok.get_ngrok_process()
     print(tunnel1)
     try:
@@ -21,6 +18,6 @@ def tunel():
         print(" Shutting down server.")
 
         ngrok.kill()
-    return tunnel1
+    
 
 tun = tunel()
