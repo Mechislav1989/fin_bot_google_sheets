@@ -27,7 +27,7 @@ for t in client.tunnels.list():
 
 api_bot = os.getenv('bot')
 
-WEBHOOK_PATH = ''
+WEBHOOK_PATH = os.getenv('web_path')
 WEBAPP_HOST = os.getenv('webapp_host')
 WEBAPP_PORT = os.getenv('webapp_port')
 host = f"{WEBAPP_HOST}:{WEBAPP_PORT}"
