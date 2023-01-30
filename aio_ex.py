@@ -12,13 +12,14 @@ from aiogram.types import (CallbackQuery, InlineKeyboardButton,
                            InlineKeyboardMarkup)
 from middleware import AccessMiddleware
 import ngrok
+from time import sleep
 
 import wwmess
 import exceptions
 from categories import Categories
 
 load_dotenv()
-
+sleep(4)
 api_key = os.getenv('api_token')
 client = ngrok.Client(api_key)
 ports = 0
@@ -31,7 +32,7 @@ WEBHOOK_PATH = os.getenv('web_path')
 WEBAPP_HOST = os.getenv('webapp_host')
 WEBAPP_PORT = os.getenv('webapp_port')
 host = f"{WEBAPP_HOST}:{WEBAPP_PORT}"
-WEBHOOK_HOST = os.getenv('urlhook')
+WEBHOOK_HOST = ports
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 ACCESS_ID = os.getenv('access_id')
 storage: MemoryStorage = MemoryStorage()
@@ -113,7 +114,7 @@ async def category_expenses(message: types.Message):
 async def today_expenses(message: types.Message, state: FSMContext):
     answer = wwmess.get_today()
     markup = InlineKeyboardMarkup()
-    today_button = InlineKeyboardButton(text='Do you want to get plot for a day expenses?', callback_data='today')
+    today_button = InlineKeyboardButton(text='I want to get plot for a day expenses', callback_data='today')
     markup.add(today_button)
     call_data = 'day'
     
@@ -128,7 +129,7 @@ async def today_expenses(message: types.Message, state: FSMContext):
 async def today_expenses(message: types.Message, state: FSMContext):
     answer = wwmess.get_month()
     markup = InlineKeyboardMarkup()
-    today_button = InlineKeyboardButton(text='Do you want to get plot for a moth expenses?', callback_data='month')
+    today_button = InlineKeyboardButton(text='I want to get plot for a moth expenses', callback_data='month')
     markup.add(today_button)
     call_data = 'month'
     
@@ -143,7 +144,7 @@ async def today_expenses(message: types.Message, state: FSMContext):
 async def today_expenses(message: types.Message, state: FSMContext):
     answer = wwmess.get_year()
     markup = InlineKeyboardMarkup()
-    today_button = InlineKeyboardButton(text='Do you want to get plot for an year expenses?', callback_data='year')
+    today_button = InlineKeyboardButton(text='I want to get plot for an year expenses', callback_data='year')
     markup.add(today_button)
     call_data = 'year'
     
@@ -158,7 +159,7 @@ async def today_expenses(message: types.Message, state: FSMContext):
 async def today_expenses(message: types.Message, state: FSMContext):
     answer = wwmess.get_all()
     markup = InlineKeyboardMarkup()
-    today_button = InlineKeyboardButton(text='Do you want to get plot for all the time?', callback_data='all')
+    today_button = InlineKeyboardButton(text='I want get plot for all the time', callback_data='all')
     markup.add(today_button)
     call_data = 'all'
     
@@ -170,7 +171,7 @@ async def today_expenses(message: types.Message, state: FSMContext):
 
                             
 @dp.callback_query_handler(state=OrderTime.choosing_date)
-async def process_plot(callback: CallbackQuery, state: FSMContext,):
+async def process_plot(callback: CallbackQuery, state: FSMContext):
     await bot.answer_callback_query(callback.id)
     
     async with state.proxy() as date:
@@ -206,6 +207,7 @@ async def main():
     
 
 if __name__ == '__main__':
+    sleep(5)
     executor.start_webhook(
         dp, webhook_path=WEBHOOK_PATH,
         on_startup=on_startup,

@@ -125,13 +125,14 @@ def _load_categories():
     values = {
         "Products": ['meat', 'fruits', 'vegetables', 'food', 'products', 'eggs', 'water'],
         "Communal payments": ['gas', 'electricity', 'water_payments', 'garbage', 'communal'],
-        "Car expenses": ['buy car', 'machine parts', 'car', 'work car'],
-        "Professional expenses": ['book', 'notebooke', 'tab', 'computer', 'reader'],
+        "Car expenses": ['buy car', 'machine parts', 'car', 'work car', 'wash car'],
+        "Professional expenses": ['book', 'notebooke', 'tab', 'computer', 'reader', 'courses'],
         "Taxes": ['budget', 'taxes'],
-        "Enterteiment expenses": ['film', "concert", 'mcdonalds', 'cafe', 'restoran','gallery', 'theater','coffe'],
-        "Medical expenses": ['tablets', 'doctor', 'analyzes'],
-        "Child expenses": ['school'],
+        "Enterteiment expenses": ['film', "concert", 'mcdonalds', 'cafe', 'bath', 'restoran', 'gallery', 'theater','coffe', 'enterteiment'],
+        "Medical expenses": ['tablets', 'doctor', 'analyzes', 'medical'],
+        "Child expenses": ['school', 'child'],
         "Telecommunication expenses": ['telephone', 'internet', 'tv'],
+        "Food for cats and others": ['food for cats', 'cat', 'cats', 'parrot', 'dog'],
         "Other expenses": []
     } 
     return values

@@ -69,7 +69,7 @@ def get_year() -> str:
 @get_statistic
 def get_all() -> str:
     
-    return True   
+    return 'all'  
 
 
 def _day_month_year() -> str:

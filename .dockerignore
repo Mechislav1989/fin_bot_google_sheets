@@ -19,7 +19,6 @@ lib.txt
 main_task4.css
 main.css
 model.py
-ngrok_script.py
 parser_text.py
 reg_ex.py
 test.py
@@ -29,3 +28,7 @@ usb_test.py
 zip_open.py
 test/
 tes/
+instagram.py
+mp4_gif.py
+telega.mp4
+telege1.mp4
